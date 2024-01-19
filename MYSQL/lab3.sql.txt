@@ -1,0 +1,170 @@
+---->alter table student modify email varchar(50);
+Query OK, 0 rows affected (0.07 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc student;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| StudentID   | varchar(10) | NO   | PRI | NULL    |       |
+| FristName   | varchar(20) | NO   |     | NULL    |       |
+| LastName    | varchar(15) | NO   |     | NULL    |       |
+| DateOFBirth | date        | YES  |     | NULL    |       |
+| Gender      | varchar(10) | NO   |     | NULL    |       |
+| email       | varchar(50) | YES  |     | NULL    |       |
+| Phone       | bigint      | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+7 rows in set (0.00 sec)
+
+>>>Task 1: 
+
+Update the Student table with the following information:
+Change the email to 'patra_swagata@gmail.com  '
+Where FirstName is 'Swagata' and LastName is 'Patra' ;
+
+/* Fetching all the records from Student table*/
+-->> select * from STUDENT;
+select * from STUDENT;
++-----------+-----------+----------+-------------+--------+---------------------+------------+
+| StudentID | FristName | LastName | DateOFBirth | Gender | email               | Phone      |
++-----------+-----------+----------+-------------+--------+---------------------+------------+
+| S101      | Anamika   | Mondal   | 1999-12-26  | Female | anamika@gmail.com   | 7222565785 |
+| S102      | Ananya    | Maity    | 1999-06-09  | Female | ananya@gmail.com    | 6222565786 |
+| S103      | Puja      | Samanta  | 1999-04-19  | Female | puja@gmail.com      | 8222565786 |
+| S104      | Sanchaita | Mondal   | 1999-02-11  | Female | sanchaita@gmail.com | 7222565788 |
+| S105      | Swagata   | Patra    | 1999-02-09  | Female | swagata@gmail.com   | 8222565789 |
++-----------+-----------+----------+-------------+--------+---------------------+------------+
+5 rows in set (0.00 sec)
+
+/*Updating the email of a student named Swagata Patra to 'patra_swagata@gmail.com'*/
+-->> UPDATE STUDENT SET Email = 'patra_swagata@gmail.com' where FristName = 'Swagata' and LastName = 'Patra';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+/*Retrieving all data from the Student table*/
+--->> select * from STUDENT;
++-----------+-----------+----------+-------------+--------+-------------------------+------------+
+| StudentID | FristName | LastName | DateOFBirth | Gender | email                   | Phone      |
++-----------+-----------+----------+-------------+--------+-------------------------+------------+
+| S101      | Anamika   | Mondal   | 1999-12-26  | Female | anamika@gmail.com       | 7222565785 |
+| S102      | Ananya    | Maity    | 1999-06-09  | Female | ananya@gmail.com        | 6222565786 |
+| S103      | Puja      | Samanta  | 1999-04-19  | Female | puja@gmail.com          | 8222565786 |
+| S104      | Sanchaita | Mondal   | 1999-02-11  | Female | sanchaita@gmail.com     | 7222565788 |
+| S105      | Swagata   | Patra    | 1999-02-09  | Female | patra_swagata@gmail.com | 8222565789 |
++-----------+-----------+----------+-------------+--------+-------------------------+------------+
+5 rows in set (0.00 sec)
+
+_________________________________________________________________________________________________________
+_________________________________________________________________________________________________________
+
+--->alter table instructor modify email varchar(50);
+Query OK, 0 rows affected (0.06 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc instructor;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| InstructorID | varchar(10) | NO   | PRI | NULL    |       |
+| FirstName    | varchar(20) | NO   |     | NULL    |       |
+| LastName     | varchar(15) | NO   |     | NULL    |       |
+| email        | varchar(50) | YES  |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+Update the Instructor with the following information:
+Change the email to 'ritu_singh12@gmail'
+Where FirstName of the instructor is 'RITU' and LastName is 'SINGH'.
+
+/* Fetching all the records from Instructor table*/
+ select * from INSTRUCTOR;
++--------------+-----------+----------+---------------------------+
+| InstructorID | FirstName | LastName | email                     |
++--------------+-----------+----------+---------------------------+
+| I101         | AKASH     | PAUL     | akashpaul@gmail.com       |
+| I102         | SANGITA   | BANERJEE | banerjeesangita@gmail.com |
+| I103         | RITU      | SINGH    | ritu12@gmail.com          |
+| I104         | SOUMODEEP | DATTA    | soumodeep365@gmail.com    |
+| I105         | ANIKET    | ROY      | royaniket@gmail.com       |
++--------------+-----------+----------+---------------------------+
+5 rows in set (0.00 sec)
+
+/*Update the Instructor table's email for a specific instructor*/
+UPDATE INSTRUCTOR SET Email = 'ritu_singh12@gmail.com' where FirstName = 'RITU' and LastName = 'SINGH';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+/*Retrieving all data from the Instructor table*/
+--->> select * from INSTRUCTOR;
++--------------+-----------+----------+---------------------------+
+| InstructorID | FirstName | LastName | email                     |
++--------------+-----------+----------+---------------------------+
+| I101         | AKASH     | PAUL     | akashpaul@gmail.com       |
+| I102         | SANGITA   | BANERJEE | banerjeesangita@gmail.com |
+| I103         | RITU      | SINGH    | ritu_singh12@gmail.com    |
+| I104         | SOUMODEEP | DATTA    | soumodeep365@gmail.com    |
+| I105         | ANIKET    | ROY      | royaniket@gmail.com       |
++--------------+-----------+----------+---------------------------+
+5 rows in set (0.00 sec)
+__________________________________________________________________________________________________________________
+__________________________________________________________________________________________________________________
+
+>>>>Task 2:
+Delete record from the Student table on following condition:
+Delete student/students records from the Student table where last name is Dey.
+
+
+/*Inserting a new row into the Student table*/
+INSERT into Student values
+    -> ('S106', 'Risha', 'Dey', '1999-05-15', 'Female', 'risha@gmail.com',9654825786);
+Query OK, 1 row affected (0.00 sec)
+
+/*Retrieving all data from the Student table*/
+--->> select * from STUDENT;
++-----------+-----------+----------+-------------+--------+-------------------------+------------+
+| StudentID | FristName | LastName | DateOFBirth | Gender | email                   | Phone      |
++-----------+-----------+----------+-------------+--------+-------------------------+------------+
+| S101      | Anamika   | Mondal   | 1999-12-26  | Female | anamika@gmail.com       | 7222565785 |
+| S102      | Ananya    | Maity    | 1999-06-09  | Female | ananya@gmail.com        | 6222565786 |
+| S103      | Puja      | Samanta  | 1999-04-19  | Female | puja@gmail.com          | 8222565786 |
+| S104      | Sanchaita | Mondal   | 1999-02-11  | Female | sanchaita@gmail.com     | 7222565788 |
+| S105      | Swagata   | Patra    | 1999-02-09  | Female | patra_swagata@gmail.com | 8222565789 |
+| S106      | Risha     | Dey      | 1999-05-15  | Female | risha@gmail.com         | 9654825786 |
++-----------+-----------+----------+-------------+--------+-------------------------+------------+
+6 rows in set (0.00 sec)
+
+/* Delete record from the Student table based on a specific condition */
+DELETE FROM Student WHERE LastName = 'Dey';
+Query OK, 1 row affected (0.00 sec)
+
+/*Retrieving all data from the Student table after deletion*/
+mysql> select * from STUDENT;
++-----------+-----------+----------+-------------+--------+-------------------------+------------+
+| StudentID | FristName | LastName | DateOFBirth | Gender | email                   | Phone      |
++-----------+-----------+----------+-------------+--------+-------------------------+------------+
+| S101      | Anamika   | Mondal   | 1999-12-26  | Female | anamika@gmail.com       | 7222565785 |
+| S102      | Ananya    | Maity    | 1999-06-09  | Female | ananya@gmail.com        | 6222565786 |
+| S103      | Puja      | Samanta  | 1999-04-19  | Female | puja@gmail.com          | 8222565786 |
+| S104      | Sanchaita | Mondal   | 1999-02-11  | Female | sanchaita@gmail.com     | 7222565788 |
+| S105      | Swagata   | Patra    | 1999-02-09  | Female | patra_swagata@gmail.com | 8222565789 |
++-----------+-----------+----------+-------------+--------+-------------------------+------------+
+5 rows in set (0.00 sec)
+
+__________________________________________________________________________________________________________________
+__________________________________________________________________________________________________________________
+>>>>>Task 3:
+List the student whose first name starts with P.
+
+/*The '%' wildcard after 'P' in the LIKE operator matches any sequence of characters after 'P' */
+select * from STUDENT  WHERE FristName LIKE 'P%';
++-----------+-----------+----------+-------------+--------+----------------+------------+
+| StudentID | FristName | LastName | DateOFBirth | Gender | email          | Phone      |
++-----------+-----------+----------+-------------+--------+----------------+------------+
+| S103      | Puja      | Samanta  | 1999-04-19  | Female | puja@gmail.com | 8222565786 |
++-----------+-----------+----------+-------------+--------+----------------+------------+
+1 row in set (0.00 sec)
+
+
+
+
+

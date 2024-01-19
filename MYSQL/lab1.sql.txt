@@ -1,0 +1,186 @@
+*/Create  a  database  with  the  name  StudentManagementSystem.*/
+
+-->Create Database StudentManagementSystem;
+
+-->use studentmanagementsystem;
+Database changed
+
+Create  a  table  with  named  Student  with  attributes: 
+● StudentID  (Primary  Key)
+● FirstName 
+● LastName 
+● DateOfBirth 
+● Gender 
+● Email
+● Phone
+---->>create table STUDENT(
+    -> StudentID varchar(10) PRIMARY KEY,
+    -> FristName varchar(20) NOT NULL,
+    -> LastName varchar(15) NOT NULL,
+    -> DateOFBirth date,
+    -> Gender varchar(10) NOT NULL,
+    -> Email varchar(20) NOT NULL,
+    -> Phone bigint NOT NULL
+    -> );
+Query OK, 0 rows affected
+
+--->>>desc STUDENT;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| StudentID   | varchar(10) | NO   | PRI | NULL    |       |
+| FristName   | varchar(20) | NO   |     | NULL    |       |
+| LastName    | varchar(15) | NO   |     | NULL    |       |
+| DateOFBirth | date        | YES  |     | NULL    |       |
+| Gender      | varchar(10) | NO   |     | NULL    |       |
+| Email       | varchar(20) | NO   |     | NULL    |       |
+| Phone       | bigint      | NO   |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+7 rows in set
+____________________________________________________________________________
+
+____________________________________________________________________________
+Create  a  table  with  name  Course  with  attributes: 
+● CourseID  (Primary  Key)
+● CourseTitle 
+● Credits
+------>>Create table COURSE(
+    -> CourseID varchar(10) PRIMARY KEY,
+    -> CourseTitle varchar(20) NOT NULL,
+    -> Credits double NOT NULL
+    -> );
+Query OK, 0 rows affected
+
+---->>>desc COURSE;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| CourseID    | varchar(10) | NO   | PRI | NULL    |       |
+| CourseTitle | varchar(20) | NO   |     | NULL    |       |
+| Credits     | double      | NO   |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+3 rows in set
+_____________________________________________________________________________
+
+______________________________________________________________________________
+
+Create  a  table  with  named  Instructor  with  attributes: 
+●InstructorID  (Primary  Key)
+● FirstName 
+● LastName 
+● Email
+
+----->> Create table INSTRUCTOR(
+    -> InstructorID varchar(10) PRIMARY KEY,
+    -> FirstName varchar(20) NOT NULL,
+    -> LastName varchar(15) NOT NULL,
+    -> Email varchar(30) NOT NULL
+    -> );
+Query OK, 0 rows affected 
+
+----->>> desc INSTRUCTOR;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| InstructorID | varchar(10) | NO   | PRI | NULL    |       |
+| FirstName    | varchar(20) | NO   |     | NULL    |       |
+| LastName     | varchar(15) | NO   |     | NULL    |       |
+| Email        | varchar(30) | NO   |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+4 rows in set
+_______________________________________________________________________________________
+
+_______________________________________________________________________________________
+Create  a  table  with  named  Enrollment  with  attributes: 
+● EnrollmentID  (Primary  Key)
+● EnrollmentDate
+● StudentID(Foreign  key) 
+● CourseID(Foreign  Key) 
+● InstructorID(Foreign  key)
+
+---->>Create table ENROLLMENT(
+    -> EnrollmentID varchar(15) PRIMARY KEY,
+    -> EnrollmentDate  date,
+    -> studentid varchar(10),
+    -> FOREIGN KEY(studentid) REFERENCES STUDENT(StudentID),
+    -> courseid varchar(10),
+    -> FOREIGN KEY(courseid) REFERENCES COURSE(CourseID),
+    -> instructorid varchar(10),
+    -> FOREIGN KEY(instructorid) REFERENCES INSTRUCTOR(InstructorID)
+    -> );
+Query OK, 0 rows affected
+
+----->>> desc ENROLLMENT;
++----------------+-------------+------+-----+---------+-------+
+| Field          | Type        | Null | Key | Default | Extra |
++----------------+-------------+------+-----+---------+-------+
+| EnrollmentID   | varchar(15) | NO   | PRI | NULL    |       |
+| EnrollmentDate | date        | YES  |     | NULL    |       |
+| studentid      | varchar(10) | YES  | MUL | NULL    |       |
+| courseid       | varchar(10) | YES  | MUL | NULL    |       |
+| instructorid   | varchar(10) | YES  | MUL | NULL    |       |
++----------------+-------------+------+-----+---------+-------+
+5 rows in set
+___________________________________________________________________________________________
+
+____________________________________________________________________________________________
+Create  a  table  with  named  Score  with  attributes: 
+● ScoreID  (Primary  Key)
+● CourseID (Foreign key) 
+● StudentID (Foreign Key) 
+● DateOfExam
+● CreditObtained
+---->>Create table SCORE(
+    -> ScoreID varchar(10) PRIMARY KEY,
+    -> courseid varchar(10),
+    -> FOREIGN KEY(courseid) REFERENCES COURSE(CourseID),
+    -> studentid varchar(10),
+    -> FOREIGN KEY(studentid) REFERENCES STUDENT(StudentID),
+    -> DateOFExam date,
+    -> CreditObtained int NOT NULL
+    -> );
+Query OK, 0 rows affected
+
+---->>>desc SCORE;
++----------------+-------------+------+-----+---------+-------+
+| Field          | Type        | Null | Key | Default | Extra |
++----------------+-------------+------+-----+---------+-------+
+| ScoreID        | varchar(10) | NO   | PRI | NULL    |       |
+| courseid       | varchar(10) | YES  | MUL | NULL    |       |
+| studentid      | varchar(10) | YES  | MUL | NULL    |       |
+| DateOFExam     | date        | YES  |     | NULL    |       |
+| CreditObtained | int         | NO   |     | NULL    |       |
++----------------+-------------+------+-----+---------+-------+
+5 rows in set
+__________________________________________________________________________________________________
+
+___________________________________________________________________________________________________
+
+Create  a  table  with  named  Feedback  with  attributes: 
+● FeedbackID  (Primary  Key)
+● StudentID  (Foreign  key) 
+● Date
+● InstructorName 
+● Feedback
+
+---->> Create table FEEDBACk(
+    -> FeedbackID varchar(10) PRIMARY KEY,
+    -> studentid varchar(10),
+    -> FOREIGN KEY(studentid) REFERENCES STUDENT(StudentID),
+    -> Date date,
+    -> InstructorName varchar(30) NOT NULL,
+    -> Feedback varchar(100) NOt NULL
+    -> );
+Query OK, 0 rows affected 
+
+---->>> desc FEEDBACK;
++----------------+--------------+------+-----+---------+-------+
+| Field          | Type         | Null | Key | Default | Extra |
++----------------+--------------+------+-----+---------+-------+
+| FeedbackID     | varchar(10)  | NO   | PRI | NULL    |       |
+| studentid      | varchar(10)  | YES  | MUL | NULL    |       |
+| Date           | date         | YES  |     | NULL    |       |
+| InstructorName | varchar(30)  | NO   |     | NULL    |       |
+| Feedback       | varchar(100) | NO   |     | NULL    |       |
++----------------+--------------+------+-----+---------+-------+
+5 rows in set

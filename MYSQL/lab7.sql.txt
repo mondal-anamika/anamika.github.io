@@ -1,0 +1,198 @@
+>>>Assignment 1
+
+use studentmanagementsystem;
+Database changed
+--->>> select * from student;
++-----------+-----------+----------+-------------+--------+-------------------------+------------+
+| StudentID | FristName | LastName | DateOFBirth | Gender | email                   | Phone      |
++-----------+-----------+----------+-------------+--------+-------------------------+------------+
+| S101      | Anamika   | Mondal   | 1999-12-26  | Female | anamika@gmail.com       | 7222565785 |
+| S102      | Ananya    | Maity    | 1999-06-09  | Female | ananya@gmail.com        | 6222565786 |
+| S103      | Puja      | Samanta  | 1999-04-19  | Female | puja@gmail.com          | 8222565786 |
+| S104      | Sanchaita | Mondal   | 1999-02-11  | Female | sanchaita@gmail.com     | 7222565788 |
+| S105      | Swagata   | Patra    | 1999-02-09  | Female | patra_swagata@gmail.com | 8222565789 |
++-----------+-----------+----------+-------------+--------+-------------------------+------------+
+5 rows in set (0.00 sec)
+
+
+Task1: Assume you are managing a database of student records, and you need to
+retrieve information about students born after February 10, 1999. What will be the sql query
+for this?
+-->> select * from student where DateOfBirth > '1999-02-15';
++-----------+-----------+----------+-------------+--------+-------------------+------------+
+| StudentID | FristName | LastName | DateOFBirth | Gender | email             | Phone      |
++-----------+-----------+----------+-------------+--------+-------------------+------------+
+| S101      | Anamika   | Mondal   | 1999-12-26  | Female | anamika@gmail.com | 7222565785 |
+| S102      | Ananya    | Maity    | 1999-06-09  | Female | ananya@gmail.com  | 6222565786 |
+| S103      | Puja      | Samanta  | 1999-04-19  | Female | puja@gmail.com    | 8222565786 |
++-----------+-----------+----------+-------------+--------+-------------------+------------+
+3 rows in set (0.00 sec)
+
+_______________________________________________________________________________________________________________________________
+_______________________________________________________________________________________________________________________________
+
+
+Task2: Assume you have a database containing a "Student" table with information
+about students, including their first names. You want to retrieve records of students
+whose first names start with either 'A' or 'J'. To achieve this,what will be your sql query?
+
+-->>>select * from student where FristName LIKE  'A%' OR FristName LIKE 'P%';
++-----------+-----------+----------+-------------+--------+-------------------+------------+
+| StudentID | FristName | LastName | DateOFBirth | Gender | email             | Phone      |
++-----------+-----------+----------+-------------+--------+-------------------+------------+
+| S101      | Anamika   | Mondal   | 1999-12-26  | Female | anamika@gmail.com | 7222565785 |
+| S102      | Ananya    | Maity    | 1999-06-09  | Female | ananya@gmail.com  | 6222565786 |
+| S103      | Puja      | Samanta  | 1999-04-19  | Female | puja@gmail.com    | 8222565786 |
++-----------+-----------+----------+-------------+--------+-------------------+------------+
+3 rows in set (0.00 sec)
+
+_____________________________________________________________________________
+____________________________________________________________________________________________________________________________________
+
+Task 3 .Let's consider a scenario where you have a database with a "Student" table that
+contains information about students, including their first names and email addresses.
+You want to retrieve records of students whose first name is not 'Alice' and whose email
+addresses contain the domain '@example.com'. To achieve this, what will be your sql
+query?
+
+-->>>SELECT* FROM Student WHERE NOT FristName = 'Sanchaita' AND Email LIKE '%@gmail.com';
++-----------+-----------+----------+-------------+--------+-------------------------+------------+
+| StudentID | FristName | LastName | DateOFBirth | Gender | email                   | Phone      |
++-----------+-----------+----------+-------------+--------+-------------------------+------------+
+| S101      | Anamika   | Mondal   | 1999-12-26  | Female | anamika@gmail.com       | 7222565785 |
+| S102      | Ananya    | Maity    | 1999-06-09  | Female | ananya@gmail.com        | 6222565786 |
+| S103      | Puja      | Samanta  | 1999-04-19  | Female | puja@gmail.com          | 8222565786 |
+| S105      | Swagata   | Patra    | 1999-02-09  | Female | patra_swagata@gmail.com | 8222565789 |
++-----------+-----------+----------+-------------+--------+-------------------------+------------+
+4 rows in set (0.00 sec)
+
+__________________________________________________________________________________________________________________________________________
+------------------------------------------------------------------------------------------------------------------------------------------
+
+>>>.Assignment 2
+
+-->> CREATE DATABASE EmployeeRecords;
+Query OK
+
+Task1: Create a table Person with PersonID int, FirstName varchar(255),
+LastName varchar(255) and age (int).
+Make PersonID PRIMARY KEY.
+
+ >>USE EmployeeRecords;
+Database changed
+
+--->>> CREATE Table Person (
+    -> Person_id int PRIMARY KEY,
+    -> First_name varchar (20),
+    -> Last_name varchar (20),
+    -> Age int
+    -> );
+Query OK
+
+->>DESC Person;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| Person_id  | int         | NO   | PRI | NULL    |       |
+| First_name | varchar(20) | YES  |     | NULL    |       |
+| Last_name  | varchar(20) | YES  |     | NULL    |       |
+| Age        | int         | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+4 rows in set
+______________________________________________________________________________
+______________________________________________________________________________
+
+
+Task2: Create a table Employee with emp_id int, first_name varchar(255),
+last_name varchar(255) and age (int )
+Make emp_id PRIMARY KEY.
+
+-->>> CREATE table Employee (
+    -> Emp_id int PRIMARY KEY,
+    -> First_name varchar(20),
+    -> Last_name varchar(20),
+    -> Age int
+    -> );
+Query OK, 
+
+-->>> DESC Employee;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| Emp_id     | int         | NO   | PRI | NULL    |       |
+| First_name | varchar(20) | YES  |     | NULL    |       |
+| Last_name  | varchar(20) | YES  |     | NULL    |       |
+| Age        | int         | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+4 rows in set
+___________________________________________________________________________
+___________________________________________________________________________ 
+
+
+Task 3: Insert data to Person table
+--->>> INSERT INTO Person VALUES
+    -> (01,'Riya','Das',20),
+    -> (02,'Arya','Sengupta',23),
+    -> (03,'Kabir','Ghosal',25),
+    -> (04,'Anaya','Sen',29),
+    -> (05,'Rohan','Dutta',32);
+
+Query OK,
+-->>> select * from person;
++-----------+------------+-----------+------+
+| Person_id | First_name | Last_name | Age  |
++-----------+------------+-----------+------+
+|         1 | Riya       | Das       |   20 |
+|         2 | Arya       | Sengupta  |   23 |
+|         3 | Kabir      | Ghosal    |   25 |
+|         4 | Anaya      | Sen       |   29 |
+|         5 | Rohan      | Dutta     |   32 |
++-----------+------------+-----------+------+
+5 rows in set
+___________________________________________________________________________________________________
+___________________________________________________________________________________________________
+
+Task 4: Insert data to Employee table
+/*Inserting data into the 'Employee' table*/
+--->>INSERT INTO Employee VALUES
+    -> (101,'Soham','Ghosh',28),
+    -> (102,'Ishan','Banerjee',25),
+    -> (103,'Neha','Gupta',30),
+    -> (104,'Amit','Sharma',33),
+    -> (105,'Diya','Roy',30);
+Query OK, 
+
+--->>>select * from employee;
++--------+------------+-----------+------+
+| Emp_id | First_name | Last_name | Age  |
++--------+------------+-----------+------+
+|    101 | Soham      | Ghosh     |   28 |
+|    102 | Ishan      | Banerjee  |   25 |
+|    103 | Neha       | Gupta     |   30 |
+|    104 | Amit       | Sharma    |   33 |
+|    105 | Diya       | Roy       |   30 |
++--------+------------+-----------+------+
+5 rows in set
+___________________________________________________________________________________________________________________
+________________________________________________________________________________________________________________________
+
+Task 5: Create Union of two tables
+
+
+--->>> SELECT Person_id, First_name, Last_name, Age FROM Person UNION
+    -> SELECT Emp_id AS Person_id, First_name, Last_name, Age FROM Employee;
++-----------+------------+-----------+------+
+| Person_id | First_name | Last_name | Age  |
++-----------+------------+-----------+------+
+|         1 | Riya       | Das       |   20 |
+|         2 | Arya       | Sengupta  |   23 |
+|         3 | Kabir      | Ghosal    |   25 |
+|         4 | Anaya      | Sen       |   29 |
+|         5 | Rohan      | Dutta     |   32 |
+|       101 | Soham      | Ghosh     |   28 |
+|       102 | Ishan      | Banerjee  |   25 |
+|       103 | Neha       | Gupta     |   30 |
+|       104 | Amit       | Sharma    |   33 |
+|       105 | Diya       | Roy       |   30 |
++-----------+------------+-----------+------+
+10 rows in set

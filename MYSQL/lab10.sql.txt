@@ -1,0 +1,79 @@
+/*Lab: Use the same student management system Database and table from previous
+lab.Perform the following commands on the table Student and Enrollment.*/
+
+
+/*1. Assume a university where students can enroll in various courses.Now, write down a
+FULL outer JOIN query to retrieve the details.*/
+
+/* Fetching all the records from Student table*/
+-->>select * from student;
++-----------+-----------+----------+-------------+--------+-------------------------+------------+
+| StudentID | FristName | LastName | DateOFBirth | Gender | email                   | Phone      |
++-----------+-----------+----------+-------------+--------+-------------------------+------------+
+| S101      | Anamika   | Mondal   | 1999-12-26  | Female | anamika@gmail.com       | 7222565785 |
+| S102      | Ananya    | Maity    | 1999-06-09  | Female | ananya@gmail.com        | 6222565786 |
+| S103      | Puja      | Samanta  | 1999-04-19  | Female | puja@gmail.com          | 8222565786 |
+| S104      | Sanchaita | Mondal   | 1999-02-11  | Female | sanchaita@gmail.com     | 7222565788 |
+| S105      | Swagata   | Patra    | 1999-02-09  | Female | patra_swagata@gmail.com | 8222565789 |
++-----------+-----------+----------+-------------+--------+-------------------------+------------+
+5 rows in set (0.00 sec)
+
+/* Fetching all the records from Enrollment table*/
+-->>select * from enrollment;
++--------------+----------------+-----------+----------+--------------+
+| EnrollmentID | EnrollmentDate | studentid | courseid | instructorid |
++--------------+----------------+-----------+----------+--------------+
+| E101         | 2023-09-13     | S101      | C101     | I101         |
+| E102         | 2023-09-20     | S102      | C102     | I102         |
+| E103         | 2023-10-02     | S103      | C103     | I103         |
+| E104         | 2023-10-15     | S104      | C104     | I104         |
+| E105         | 2023-11-10     | S105      | C105     | I105         |
++--------------+----------------+-----------+----------+--------------+
+5 rows in set (0.00 sec)
+
+/*This query retrieves details of students and their enrollments using a FULL OUTER JOIN.
+It combines records from both tables, including unmatched rows from both Student and Enrollment tables.
+The LEFT JOIN and UNION combination simulates a FULL OUTER JOIN*/
+
+-->>SELECT * FROM Student s LEFT JOIN Enrollment e ON s.StudentID = e.Studentid
+    -> UNION
+    -> SELECT * FROM Student s LEFT JOIN Enrollment e ON s.StudentID = e.Studentid;
++-----------+-----------+----------+-------------+--------+-------------------------+------------+--------------+----------------+-----------+----------+--------------+
+| StudentID | FristName | LastName | DateOFBirth | Gender | email                   | Phone      | EnrollmentID | EnrollmentDate | studentid | courseid | instructorid |
++-----------+-----------+----------+-------------+--------+-------------------------+------------+--------------+----------------+-----------+----------+--------------+
+| S101      | Anamika   | Mondal   | 1999-12-26  | Female | anamika@gmail.com       | 7222565785 | E101         | 2023-09-13     | S101      | C101     | I101         |
+| S102      | Ananya    | Maity    | 1999-06-09  | Female | ananya@gmail.com        | 6222565786 | E102         | 2023-09-20     | S102      | C102     | I102         |
+| S103      | Puja      | Samanta  | 1999-04-19  | Female | puja@gmail.com          | 8222565786 | E103         | 2023-10-02     | S103      | C103     | I103         |
+| S104      | Sanchaita | Mondal   | 1999-02-11  | Female | sanchaita@gmail.com     | 7222565788 | E104         | 2023-10-15     | S104      | C104     | I104         |
+| S105      | Swagata   | Patra    | 1999-02-09  | Female | patra_swagata@gmail.com | 8222565789 | E105         | 2023-11-10     | S105      | C105     | I105         |
++-----------+-----------+----------+-------------+--------+-------------------------+------------+--------------+----------------+-----------+----------+--------------+
+5 rows in set (0.00 sec)
+
+____________________________________________________________________________________________________________________________________________________________________________________________________
+_____________________________________________________________________________________________________________________________________________________________________________________________________
+
+
+/* 2.Assume a university where students can enroll in various courses.Now, write down a
+Natural JOIN query to retrieve the details. */
+
+
+/*This query retrieves details of students and their enrollments using a NATURAL JOIN.*/
+/*The NATURAL JOIN automatically joins tables based on columns with the same name.*/
+
+--->>SELECT * FROM Student
+    -> NATURAL JOIN
+    -> Enrollment;
++-----------+-----------+----------+-------------+--------+-------------------------+------------+--------------+----------------+----------+--------------+
+| StudentID | FristName | LastName | DateOFBirth | Gender | email                   | Phone      | EnrollmentID | EnrollmentDate | courseid | instructorid |
++-----------+-----------+----------+-------------+--------+-------------------------+------------+--------------+----------------+----------+--------------+
+| S101      | Anamika   | Mondal   | 1999-12-26  | Female | anamika@gmail.com       | 7222565785 | E101         | 2023-09-13     | C101     | I101         |
+| S102      | Ananya    | Maity    | 1999-06-09  | Female | ananya@gmail.com        | 6222565786 | E102         | 2023-09-20     | C102     | I102         |
+| S103      | Puja      | Samanta  | 1999-04-19  | Female | puja@gmail.com          | 8222565786 | E103         | 2023-10-02     | C103     | I103         |
+| S104      | Sanchaita | Mondal   | 1999-02-11  | Female | sanchaita@gmail.com     | 7222565788 | E104         | 2023-10-15     | C104     | I104         |
+| S105      | Swagata   | Patra    | 1999-02-09  | Female | patra_swagata@gmail.com | 8222565789 | E105         | 2023-11-10     | C105     | I105         |
++-----------+-----------+----------+-------------+--------+-------------------------+------------+--------------+----------------+----------+--------------+
+5 rows in set (0.00 sec)
+
+
+
+

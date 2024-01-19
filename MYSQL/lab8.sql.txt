@@ -1,0 +1,54 @@
+Lab 1: Use the Student management system Database and table from our previous
+lab and write a sql query to achieve the below scenario.
+Assume you are managing a university database that tracks student enrollments in
+various courses. You have two tables, "Student" and "Enrollment". The goal is to
+retrieve information about each student's ID, first name, last name, and their
+enrollment details, including the enrollment ID and the associated course ID.
+
+
+
+>>>use studentmanagementsystem;
+Database changed
+
+/*retrieves all records from the 'student' table, displaying student information such as ID, first name, last name, date of birth, gender, email, and phone number*/
+-->>>select * from student;
++-----------+-----------+----------+-------------+--------+-------------------------+------------+
+| StudentID | FristName | LastName | DateOFBirth | Gender | email                   | Phone      |
++-----------+-----------+----------+-------------+--------+-------------------------+------------+
+| S101      | Anamika   | Mondal   | 1999-12-26  | Female | anamika@gmail.com       | 7222565785 |
+| S102      | Ananya    | Maity    | 1999-06-09  | Female | ananya@gmail.com        | 6222565786 |
+| S103      | Puja      | Samanta  | 1999-04-19  | Female | puja@gmail.com          | 8222565786 |
+| S104      | Sanchaita | Mondal   | 1999-02-11  | Female | sanchaita@gmail.com     | 7222565788 |
+| S105      | Swagata   | Patra    | 1999-02-09  | Female | patra_swagata@gmail.com | 8222565789 |
++-----------+-----------+----------+-------------+--------+-------------------------+------------+
+5 rows in set (0.00 sec)
+
+
+/*retrieves all records from the 'enrollment' table, showing enrollment details including enrollment ID, date, student ID, course ID, and instructor ID*/
+-->>> select * from enrollment;
++--------------+----------------+-----------+----------+--------------+
+| EnrollmentID | EnrollmentDate | studentid | courseid | instructorid |
++--------------+----------------+-----------+----------+--------------+
+| E101         | 2023-09-13     | S101      | C101     | I101         |
+| E102         | 2023-09-20     | S102      | C102     | I102         |
+| E103         | 2023-10-02     | S103      | C103     | I103         |
+| E104         | 2023-10-15     | S104      | C104     | I104         |
+| E105         | 2023-11-10     | S105      | C105     | I105         |
++--------------+----------------+-----------+----------+--------------+
+5 rows in set (0.00 sec)
+
+
+/*retrieves information about each student's ID, first name, last name, and their enrollment details (enrollment ID and associated course ID) by performing an inner join between the "Student" and "Enrollment" tables based on the StudentID*/
+SELECT s.StudentID, s.FristName, s.LastName, e.EnrollmentID, e.CourseID
+    ->  FROM Student s JOIN  Enrollment e
+    ->  ON s.StudentId = e.StudentId;
++-----------+-----------+----------+--------------+----------+
+| StudentID | FristName | LastName | EnrollmentID | CourseID |
++-----------+-----------+----------+--------------+----------+
+| S101      | Anamika   | Mondal   | E101         | C101     |
+| S102      | Ananya    | Maity    | E102         | C102     |
+| S103      | Puja      | Samanta  | E103         | C103     |
+| S104      | Sanchaita | Mondal   | E104         | C104     |
+| S105      | Swagata   | Patra    | E105         | C105     |
++-----------+-----------+----------+--------------+----------+
+5 rows in set (0.00 sec)

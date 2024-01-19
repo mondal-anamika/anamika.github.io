@@ -1,0 +1,155 @@
+/*Lab: Use the Student Management System Database and table from previous lab.Perform the following commands on the table Student and Enrollment.*/
+
+/*1. Let's consider a scenario where you have a database tracking student
+enrollments and some students may not be enrolled in any courses.
+John Doe (StudentID: 1) is enrolled in courses with EnrollmentIDs 101 and 102.
+Jane Smith (StudentID: 2) is enrolled in courses with EnrollmentIDs 103 and 104.
+Bob Johnson (StudentID: 3) is not enrolled in any courses.
+Now,run RIGHT OUTER JOIN query to retrieve data.*/
+
+--->>use studentmanagementsystem;
+Database changed
+
+/* Fetching all the records from Student table*/
+--->>> select * from student;
++-----------+-----------+----------+-------------+--------+-------------------------+------------+
+| StudentID | FristName | LastName | DateOFBirth | Gender | email                   | Phone      |
++-----------+-----------+----------+-------------+--------+-------------------------+------------+
+| S101      | Anamika   | Mondal   | 1999-12-26  | Female | anamika@gmail.com       | 7222565785 |
+| S102      | Ananya    | Maity    | 1999-06-09  | Female | ananya@gmail.com        | 6222565786 |
+| S103      | Puja      | Samanta  | 1999-04-19  | Female | puja@gmail.com          | 8222565786 |
+| S104      | Sanchaita | Mondal   | 1999-02-11  | Female | sanchaita@gmail.com     | 7222565788 |
+| S105      | Swagata   | Patra    | 1999-02-09  | Female | patra_swagata@gmail.com | 8222565789 |
++-----------+-----------+----------+-------------+--------+-------------------------+------------+
+5 rows in set (0.00 sec)
+
+
+/*Inserting Data into Student Table */
+-->>>Insert into Student values
+    -> ('S106','Abhishek','Das','1998-11-27','male','abhishek@gamil.com', 8222565709);
+Query OK, 1 row affected (0.01 sec)
+
+
+/*Retrieves all records from the 'student' table, displaying student information such as ID, first name, last name, date of birth, gender, email, and phone number*/
+-->>select * from student;
++-----------+-----------+----------+-------------+--------+-------------------------+------------+
+| StudentID | FristName | LastName | DateOFBirth | Gender | email                   | Phone      |
++-----------+-----------+----------+-------------+--------+-------------------------+------------+
+| S101      | Anamika   | Mondal   | 1999-12-26  | Female | anamika@gmail.com       | 7222565785 |
+| S102      | Ananya    | Maity    | 1999-06-09  | Female | ananya@gmail.com        | 6222565786 |
+| S103      | Puja      | Samanta  | 1999-04-19  | Female | puja@gmail.com          | 8222565786 |
+| S104      | Sanchaita | Mondal   | 1999-02-11  | Female | sanchaita@gmail.com     | 7222565788 |
+| S105      | Swagata   | Patra    | 1999-02-09  | Female | patra_swagata@gmail.com | 8222565789 |
+| S106      | Abhishek  | Das      | 1998-11-27  | male   | abhishek@gamil.com      | 8222565709 |
++-----------+-----------+----------+-------------+--------+-------------------------+------------+
+6 rows in set (0.00 sec)
+
+
+/*Retrieves all records from the 'enrollment' table, showing enrollment details including enrollment ID, date, student ID, course ID, and instructor ID*/
+-->>select * from enrollment;
++--------------+----------------+-----------+----------+--------------+
+| EnrollmentID | EnrollmentDate | studentid | courseid | instructorid |
++--------------+----------------+-----------+----------+--------------+
+| E101         | 2023-09-13     | S101      | C101     | I101         |
+| E102         | 2023-09-20     | S102      | C102     | I102         |
+| E103         | 2023-10-02     | S103      | C103     | I103         |
+| E104         | 2023-10-15     | S104      | C104     | I104         |
+| E105         | 2023-11-10     | S105      | C105     | I105         |
++--------------+----------------+-----------+----------+--------------+
+5 rows in set (0.00 sec)
+
+
+/*Retrieves student information and associated enrollment details using a RIGHT JOIN between the 'Enrollment' and 'Student' tables*/
+--->>SELECT s.StudentID, s.FristName, s.LastName, e.EnrollmentID, e.CourseID
+    -> FROM Enrollment e RIGHT JOIN Student s
+    -> ON s.StudentID = e.studentid;
++-----------+-----------+----------+--------------+----------+
+| StudentID | FristName | LastName | EnrollmentID | CourseID |
++-----------+-----------+----------+--------------+----------+
+| S101      | Anamika   | Mondal   | E101         | C101     |
+| S102      | Ananya    | Maity    | E102         | C102     |
+| S103      | Puja      | Samanta  | E103         | C103     |
+| S104      | Sanchaita | Mondal   | E104         | C104     |
+| S105      | Swagata   | Patra    | E105         | C105     |
+| S106      | Abhishek  | Das      | NULL         | NULL     |
++-----------+-----------+----------+--------------+----------+
+6 rows in set (0.00 sec)
+
+
+___________________________________________________________________________________________________________________________________
+___________________________________________________________________________________________________________________________________
+
+
+/* Assume a university where students can enroll in various courses. Here are some
+fictional details:
+Student Information:
+Student with ID 1: John, email: john@email.com
+Student with ID 2: Jane, email: jane@email.com
+Student with ID 3: Bob, email: bob@email.com
+Enrollment Information:
+Enrollment with ID 101: John (StudentID: 1) enrolls in Math (CourseID: MATH101).
+Enrollment with ID 102: John (StudentID: 1) enrolls in History (CourseID: HIST201).
+Enrollment with ID 103: Jane (StudentID: 2) enrolls in Physics (CourseID: PHYS301).
+Enrollment with ID 104: Bob (StudentID: 3) enrolls in Chemistry (CourseID: CHEM401).
+Enrollment with ID 105: Alice (StudentID: 4) enrolls in English (CourseID: ENG501).
+Now, write a LEFT JOIN query to retrieve the data */
+
+
+/*Retrieves information about enrolled students and their corresponding course titles*/
+-->> select * from course;
++----------+---------------+---------+
+| CourseID | CourseTitle   | Credits |
++----------+---------------+---------+
+| C101     | PYTHON        |      10 |
+| C102     | JAVA          |       9 |
+| C103     | DATA ANALYTIC |      10 |
+| C104     | EXCEL         |      10 |
+| C105     | TALLY         |       9 |
++----------+---------------+---------+
+5 rows in set (0.02 sec)
+
+/* Fetching all the records from Student table*/
+select * from student;
++-----------+-----------+----------+-------------+--------+-------------------------+------------+
+| StudentID | FristName | LastName | DateOFBirth | Gender | email                   | Phone      |
++-----------+-----------+----------+-------------+--------+-------------------------+------------+
+| S101      | Anamika   | Mondal   | 1999-12-26  | Female | anamika@gmail.com       | 7222565785 |
+| S102      | Ananya    | Maity    | 1999-06-09  | Female | ananya@gmail.com        | 6222565786 |
+| S103      | Puja      | Samanta  | 1999-04-19  | Female | puja@gmail.com          | 8222565786 |
+| S104      | Sanchaita | Mondal   | 1999-02-11  | Female | sanchaita@gmail.com     | 7222565788 |
+| S105      | Swagata   | Patra    | 1999-02-09  | Female | patra_swagata@gmail.com | 8222565789 |
+| S106      | Abhishek  | Das      | 1998-11-27  | male   | abhishek@gamil.com      | 8222565709 |
++-----------+-----------+----------+-------------+--------+-------------------------+------------+
+6 rows in set (0.00 sec)
+
+->>>delete from student where studentID='S106';
+Query OK, 1 row affected (0.00 sec)
+/*Retrieves all records from the 'student' table, displaying student information such as ID, first name, last name, date of birth, gender, email, and phone number*/
+--->>> select * from student;
++-----------+-----------+----------+-------------+--------+-------------------------+------------+
+| StudentID | FristName | LastName | DateOFBirth | Gender | email                   | Phone      |
++-----------+-----------+----------+-------------+--------+-------------------------+------------+
+| S101      | Anamika   | Mondal   | 1999-12-26  | Female | anamika@gmail.com       | 7222565785 |
+| S102      | Ananya    | Maity    | 1999-06-09  | Female | ananya@gmail.com        | 6222565786 |
+| S103      | Puja      | Samanta  | 1999-04-19  | Female | puja@gmail.com          | 8222565786 |
+| S104      | Sanchaita | Mondal   | 1999-02-11  | Female | sanchaita@gmail.com     | 7222565788 |
+| S105      | Swagata   | Patra    | 1999-02-09  | Female | patra_swagata@gmail.com | 8222565789 |
++-----------+-----------+----------+-------------+--------+-------------------------+------------+
+5 rows in set (0.00 sec)
+
+
+/*Retrieves information about students, their enrollments (if any), and the corresponding course titles.
+Uses LEFT JOIN operations between the 'student', 'enrollment', and 'course' tables based on their respective IDs*/
+--->>>SELECT s.StudentID, s.FristName, s.LastName, e.EnrollmentID, e.CourseID, c.CourseTitle FROM student s
+    -> LEFT JOIN enrollment e ON s.StudentID = e.studentid
+    -> LEFT JOIN course c ON e.courseid = c.CourseID;
++-----------+-----------+----------+--------------+----------+---------------+
+| StudentID | FristName | LastName | EnrollmentID | CourseID | CourseTitle   |
++-----------+-----------+----------+--------------+----------+---------------+
+| S101      | Anamika   | Mondal   | E101         | C101     | PYTHON        |
+| S102      | Ananya    | Maity    | E102         | C102     | JAVA          |
+| S103      | Puja      | Samanta  | E103         | C103     | DATA ANALYTIC |
+| S104      | Sanchaita | Mondal   | E104         | C104     | EXCEL         |
+| S105      | Swagata   | Patra    | E105         | C105     | TALLY         |
++-----------+-----------+----------+--------------+----------+---------------+
+5 rows in set (0.00 sec)

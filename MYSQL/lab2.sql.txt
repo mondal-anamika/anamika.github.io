@@ -1,0 +1,218 @@
+*/ Use  the  Database  and  table  from  Day  1  lab.  Insert  5  records  in  each  table 
+and  retrieve  data  from  all  tables  and  display.*/
+
+For STUDENT Table--
+
+-->desc STUDENT;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| StudentID   | varchar(10) | NO   | PRI | NULL    |       |
+| FristName   | varchar(20) | NO   |     | NULL    |       |
+| LastName    | varchar(15) | NO   |     | NULL    |       |
+| DateOFBirth | date        | YES  |     | NULL    |       |
+| Gender      | varchar(10) | NO   |     | NULL    |       |
+| Email       | varchar(20) | NO   |     | NULL    |       |
+| Phone       | bigint      | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+7 rows in set 
+
+--->> insert into STUDENT values
+    -> ('S101', 'Anamika', 'Mondal', '1999-12-26', 'Female', 'anamika@gmail.com', 7222565785),
+    -> ('S102', 'Ananya', 'Maity', '1999-06-09', 'Female', 'ananya@gmail.com', 6222565786),
+    -> ('S103', 'Puja', 'Samanta', '1999-04-19', 'Female', 'puja@gmail.com', 8222565786),
+    -> ('S104', 'Sanchaita', 'Mondal', '1999-02-11', 'Female', 'sanchaita@gmail.com', 7222565788),
+    -> ('S105', 'Swagata', 'Patra', '1999-02-9', 'Female', 'swagata@gmail.com', 8222565789);
+Query OK, 5 rows affected 
+Records: 5  Duplicates: 0  Warnings: 0
+
+---->>> select * from STUDENT;
++-----------+-----------+----------+-------------+--------+---------------------+------------+
+| StudentID | FristName | LastName | DateOFBirth | Gender | Email               | Phone      |
++-----------+-----------+----------+-------------+--------+---------------------+------------+
+| S101      | Anamika   | Mondal   | 1999-12-26  | Female | anamika@gmail.com   | 7222565785 |
+| S102      | Ananya    | Maity    | 1999-06-09  | Female | ananya@gmail.com    | 6222565786 |
+| S103      | Puja      | Samanta  | 1999-04-19  | Female | puja@gmail.com      | 8222565786 |
+| S104      | Sanchaita | Mondal   | 1999-02-11  | Female | sanchaita@gmail.com | 7222565788 |
+| S105      | Swagata   | Patra    | 1999-02-09  | Female | swagata@gmail.com   | 8222565789 |
++-----------+-----------+----------+-------------+--------+---------------------+------------+
+5 rows in set
+____________________________________________________________________________________________________
+____________________________________________________________________________________________________
+
+For COURSE Table--
+-->desc COURSE;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| CourseID    | varchar(10) | NO   | PRI | NULL    |       |
+| CourseTitle | varchar(20) | NO   |     | NULL    |       |
+| Credits     | double      | NO   |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+3 rows in set
+---->>insert into COURSE values
+    -> ('C101', 'PYTHON',  10),
+    -> ('C102', 'JAVA',  9),
+    -> ('C103', 'DATA ANALYTIC',  10),
+    -> ('C104', 'EXCEL',  10),
+    -> ('C105', 'TALLY', 9);
+Query OK, 5 rows affected 
+Records: 5  Duplicates: 0  Warnings: 0
+
+---->>> select * from COURSE;
++----------+---------------+---------+
+| CourseID | CourseTitle   | Credits |
++----------+---------------+---------+
+| C101     | PYTHON        |      10 |
+| C102     | JAVA          |       9 |
+| C103     | DATA ANALYTIC |      10 |
+| C104     | EXCEL         |      10 |
+| C105     | TALLY         |       9 |
++----------+---------------+---------+
+5 rows in set
+_________________________________________________________________________________________________________
+_________________________________________________________________________________________________________
+
+For INSTRUCTOR Table---
+--->desc INSTRUCTOR;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| InstructorID | varchar(10) | NO   | PRI | NULL    |       |
+| FirstName    | varchar(20) | NO   |     | NULL    |       |
+| LastName     | varchar(15) | NO   |     | NULL    |       |
+| Email        | varchar(30) | NO   |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+4 rows in set 
+
+---->> insert into INSTRUCTOR values
+    -> ('I101', 'AKASH', 'PAUL', 'akashpaul@gmail.com'),
+    -> ('I102', 'SANGITA', 'BANERJEE', 'banerjeesangita@gmail.com'),
+    -> ('I103', 'RITU', 'SINGH', 'ritu12@gmail.com'),
+    -> ('I104', 'SOUMODEEP', 'DATTA', 'soumodeep365@gmail.com'),
+    -> ('I105', 'ANIKET', 'ROY', 'royaniket@gmail.com');
+Query OK, 5 rows affected 
+Records: 5  Duplicates: 0  Warnings: 0
+
+---->>> select * from INSTRUCTOR;
++--------------+-----------+----------+---------------------------+
+| InstructorID | FirstName | LastName | Email                     |
++--------------+-----------+----------+---------------------------+
+| I101         | AKASH     | PAUL     | akashpaul@gmail.com       |
+| I102         | SANGITA   | BANERJEE | banerjeesangita@gmail.com |
+| I103         | RITU      | SINGH    | ritu12@gmail.com          |
+| I104         | SOUMODEEP | DATTA    | soumodeep365@gmail.com    |
+| I105         | ANIKET    | ROY      | royaniket@gmail.com       |
++--------------+-----------+----------+---------------------------+
+5 rows in set 
+_________________________________________________________________________________________________________
+_________________________________________________________________________________________________________
+
+For ENROLLMENT Table---
+---->desc ENROLLMENT;
++----------------+-------------+------+-----+---------+-------+
+| Field          | Type        | Null | Key | Default | Extra |
++----------------+-------------+------+-----+---------+-------+
+| EnrollmentID   | varchar(15) | NO   | PRI | NULL    |       |
+| EnrollmentDate | date        | YES  |     | NULL    |       |
+| studentid      | varchar(10) | YES  | MUL | NULL    |       |
+| courseid       | varchar(10) | YES  | MUL | NULL    |       |
+| instructorid   | varchar(10) | YES  | MUL | NULL    |       |
++----------------+-------------+------+-----+---------+-------+
+5 rows in set 
+
+--->> insert into ENROLLMENT values
+    -> ('E101', '2023-09-13', 'S101', 'C101', 'I101'),
+    -> ('E102', '2023-09-20', 'S102', 'C102', 'I102'),
+    -> ('E103', '2023-10-02', 'S103', 'C103', 'I103'),
+    -> ('E104', '2023-10-15', 'S104', 'C104', 'I104'),
+    -> ('E105', '2023-11-10', 'S105', 'C105', 'I105');
+Query OK, 5 rows affected 
+Records: 5  Duplicates: 0  Warnings: 0
+
+---->>> select * from ENROLLMENT;
++--------------+----------------+-----------+----------+--------------+
+| EnrollmentID | EnrollmentDate | studentid | courseid | instructorid |
++--------------+----------------+-----------+----------+--------------+
+| E101         | 2023-09-13     | S101      | C101     | I101         |
+| E102         | 2023-09-20     | S102      | C102     | I102         |
+| E103         | 2023-10-02     | S103      | C103     | I103         |
+| E104         | 2023-10-15     | S104      | C104     | I104         |
+| E105         | 2023-11-10     | S105      | C105     | I105         |
++--------------+----------------+-----------+----------+--------------+
+5 rows in set
+______________________________________________________________________________________________________________
+______________________________________________________________________________________________________________
+
+For SCORE Table---
+
+--->desc score;
++----------------+-------------+------+-----+---------+-------+
+| Field          | Type        | Null | Key | Default | Extra |
++----------------+-------------+------+-----+---------+-------+
+| ScoreID        | varchar(10) | NO   | PRI | NULL    |       |
+| courseid       | varchar(10) | YES  | MUL | NULL    |       |
+| studentid      | varchar(10) | YES  | MUL | NULL    |       |
+| DateOFExam     | date        | YES  |     | NULL    |       |
+| CreditObtained | int         | NO   |     | NULL    |       |
++----------------+-------------+------+-----+---------+-------+
+5 rows in set
+
+--->>insert into SCORE values
+    -> ('S001', 'C101', 'S101', '2023-11-06', 90),
+    -> ('S002', 'C102', 'S102', '2023-11-07', 91),
+    -> ('S003', 'C103', 'S103', '2023-11-10', 92),
+    -> ('S004', 'C104', 'S104', '2023-11-12', 93),
+    -> ('S005', 'C105', 'S105', '2023-11-25', 94);
+Query OK, 5 rows affected 
+Records: 5  Duplicates: 0  Warnings: 0
+
+---->>>select * from SCORE;
++---------+----------+-----------+------------+----------------+
+| ScoreID | courseid | studentid | DateOFExam | CreditObtained |
++---------+----------+-----------+------------+----------------+
+| S001    | C101     | S101      | 2023-11-06 |             90 |
+| S002    | C102     | S102      | 2023-11-07 |             91 |
+| S003    | C103     | S103      | 2023-11-10 |             92 |
+| S004    | C104     | S104      | 2023-11-12 |             93 |
+| S005    | C105     | S105      | 2023-11-25 |             94 |
++---------+----------+-----------+------------+----------------+
+5 rows in set 
+_______________________________________________________________________________________________________________
+_______________________________________________________________________________________________________________
+
+For FEEDBACK Table---
+
+--->desc FEEDBACK;
++----------------+--------------+------+-----+---------+-------+
+| Field          | Type         | Null | Key | Default | Extra |
++----------------+--------------+------+-----+---------+-------+
+| FeedbackID     | varchar(10)  | NO   | PRI | NULL    |       |
+| studentid      | varchar(10)  | YES  | MUL | NULL    |       |
+| Date           | date         | YES  |     | NULL    |       |
+| InstructorName | varchar(30)  | NO   |     | NULL    |       |
+| Feedback       | varchar(100) | NO   |     | NULL    |       |
++----------------+--------------+------+-----+---------+-------+
+5 rows in set
+
+---->>insert into FEEDBACK values
+    -> ('F101', 'S101', '2023-12-10', 'AKASH PAUL', 'Very helpful classes,enjoy so much'),
+    -> ('F102', 'S102', '2023-12-12', 'SANGITA BANERJEE', 'Clear concept of all topic that coverd'),
+    -> ('F103', 'S103', '2023-12-15', 'RITU SINGH', 'Enjoy sessions very much which are full of knowledge'),
+    -> ('F104', 'S104', '2023-12-20', 'SOUMODEEP DATTA', 'All sessions are very helpful'),
+    -> ('F105', 'S105', '2023-12-23', 'ANIKET ROY', 'Very good classes that helped me to focued on studying');
+Query OK, 5 rows affected
+Records: 5  Duplicates: 0  Warnings: 0
+
+---->>> select * from FEEDBACK;
++------------+-----------+------------+------------------+--------------------------------------------------------+
+| FeedbackID | studentid | Date       | InstructorName   | Feedback                                               |
++------------+-----------+------------+------------------+--------------------------------------------------------+
+| F101       | S101      | 2023-12-10 | AKASH PAUL       | Very helpful classes,enjoy so much                     |
+| F102       | S102      | 2023-12-12 | SANGITA BANERJEE | Clear concept of all topic that coverd                 |
+| F103       | S103      | 2023-12-15 | RITU SINGH       | Enjoy sessions very much which are full of knowledge   |
+| F104       | S104      | 2023-12-20 | SOUMODEEP DATTA  | All sessions are very helpful                          |
+| F105       | S105      | 2023-12-23 | ANIKET ROY       | Very good classes that helped me to focued on studying |
++------------+-----------+------------+------------------+--------------------------------------------------------+
+5 rows in set 
+

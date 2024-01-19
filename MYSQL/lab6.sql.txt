@@ -1,0 +1,27 @@
+Task 1
+
+Database Schema
+Use our database Ecommerce to complete the task.
+Task: Imagine you are managing an e-commerce platform, and the holiday season is
+approaching. To capitalize on the festive spirit and boost sales, you decide to organize a
+special seasonal sale featuring electronics. The goal is to offer discounts on electronics
+and include products with a price less than rs. 70,000 in the promotion.Write a query to
+find products from the "product" table that are either in the 'Electronics' category or
+have a price less than 70000.
+
+
+
+--->>> use ecommerce;
+Database changed
+
+/* Retrieve products for the special seasonal sale featuring electronics or with a price less than Rs. 70,000 */
+--->> SELECT * FROM Product WHERE Category = 'Electronics' OR original_price < 70000;
++------------+---------------+-------------+--------------+----------------+--------------------+-------+-----------------+
+| product_id | product_name  | category    | sub_categoty | original_price | selling_price      | stock | total_price_GST |
++------------+---------------+-------------+--------------+----------------+--------------------+-------+-----------------+
+| P101       | HP-101        | Electronics | Laptop       |          50000 | 40499.990999999995 |    10 |        51839.99 |
+| P102       | Apple macBook | Electronics | Laptop       |       69999.99 |              58500 |     5 |        74880.00 |
+| P103       | Dell          | Electronics | Laptop       |          50000 |              43200 |     8 |        55296.00 |
+| P104       | Asus          | Electronics | Laptop       |          40000 |              34200 |     6 |        43776.00 |
++------------+---------------+-------------+--------------+----------------+--------------------+-------+-----------------+
+4 rows in set

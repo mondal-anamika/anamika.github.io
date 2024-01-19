@@ -1,0 +1,50 @@
+TASK 1
+/*Let's consider a scenario where you want to retrieve information about students
+from a database table named student and display the results in ascending order based
+on their last names.*/
+
+-->>use studentmanagementsystem;
+Database changed
+
+/* Fetching all the records from Student table*/
+-->>>select * from student;
++-----------+-----------+----------+-------------+--------+-------------------------+------------+
+| StudentID | FristName | LastName | DateOFBirth | Gender | email                   | Phone      |
++-----------+-----------+----------+-------------+--------+-------------------------+------------+
+| S101      | Anamika   | Mondal   | 1999-12-26  | Female | anamika@gmail.com       | 7222565785 |
+| S102      | Ananya    | Maity    | 1999-06-09  | Female | ananya@gmail.com        | 6222565786 |
+| S103      | Puja      | Samanta  | 1999-04-19  | Female | puja@gmail.com          | 8222565786 |
+| S104      | Sanchaita | Mondal   | 1999-02-11  | Female | sanchaita@gmail.com     | 7222565788 |
+| S105      | Swagata   | Patra    | 1999-02-09  | Female | patra_swagata@gmail.com | 8222565789 |
++-----------+-----------+----------+-------------+--------+-------------------------+------------+
+5 rows in set (0.00 sec)
+
+/* Retrieve student information sorted by last name in ascending order */
+-->>> select * from student ORDER by LastName ASC;
++-----------+-----------+----------+-------------+--------+-------------------------+------------+
+| StudentID | FristName | LastName | DateOFBirth | Gender | email                   | Phone      |
++-----------+-----------+----------+-------------+--------+-------------------------+------------+
+| S102      | Ananya    | Maity    | 1999-06-09  | Female | ananya@gmail.com        | 6222565786 |
+| S101      | Anamika   | Mondal   | 1999-12-26  | Female | anamika@gmail.com       | 7222565785 |
+| S104      | Sanchaita | Mondal   | 1999-02-11  | Female | sanchaita@gmail.com     | 7222565788 |
+| S105      | Swagata   | Patra    | 1999-02-09  | Female | patra_swagata@gmail.com | 8222565789 |
+| S103      | Puja      | Samanta  | 1999-04-19  | Female | puja@gmail.com          | 8222565786 |
++-----------+-----------+----------+-------------+--------+-------------------------+------------+
+5 rows in set (0.00 sec)
+
+________________________________________________________________________________________________________________
+________________________________________________________________________________________________________________
+
+TASK 2 
+/* Let's consider a scenario where you want to count the number of students based
+on their gender from a database table named Student*/
+
+
+/* Retrieves the number of students grouped by gender */
+-->>>Select Gender, COUNT(*) AS NumberOfStudents from Student  Group by gender;
++--------+------------------+
+| Gender | NumberOfStudents |
++--------+------------------+
+| Female |                5 |
++--------+------------------+
+1 row in set (0.00 sec)
